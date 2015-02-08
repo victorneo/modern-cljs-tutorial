@@ -32847,7 +32847,6 @@ cljs.core.test = function test(v) {
 };
 goog.provide("modern_cljs.modern");
 goog.require("cljs.core");
-document.write("Hello, ClojureScript!");
 goog.provide("goog.labs.userAgent.util");
 goog.require("goog.string");
 goog.labs.userAgent.util.getNativeUserAgentString_ = function() {
@@ -42424,6 +42423,34 @@ goog.net.XhrIo.prototype.formatMsg_ = function(msg) {
 goog.debug.entryPointRegistry.register(function(transformer) {
   goog.net.XhrIo.prototype.onReadyStateChangeEntryPoint_ = transformer(goog.net.XhrIo.prototype.onReadyStateChangeEntryPoint_);
 });
+goog.provide("modern_cljs.login");
+goog.require("cljs.core");
+modern_cljs.login.validate_form = function validate_form() {
+  var email = document.getElementById("email");
+  var password = document.getElementById("password");
+  if (cljs.core.count.call(null, email.value) > 0 && cljs.core.count.call(null, password.value) > 0) {
+    return true;
+  } else {
+    alert("Please complete the form!");
+    return false;
+  }
+};
+modern_cljs.login.init = function init() {
+  if (cljs.core.truth_(function() {
+    var and__3764__auto__ = document;
+    if (cljs.core.truth_(and__3764__auto__)) {
+      return document.getElementById;
+    } else {
+      return and__3764__auto__;
+    }
+  }())) {
+    var login_form = document.getElementById("loginForm");
+    return login_form.onsubmit = modern_cljs.login.validate_form;
+  } else {
+    return null;
+  }
+};
+window.onload = modern_cljs.login.init;
 goog.provide("clojure.browser.event");
 goog.require("cljs.core");
 goog.require("goog.events.EventType");
