@@ -1,9 +1,10 @@
 # modern-cljs
 
-Modern-clojurescript tutorial
+Code for following the [Modern Clojurescript tutorial](https://github.com/magomimmo/modern-cljs),
+except that I am using a newer version of Clojurescript and other dependencies.
 
 ## License
 
 Copyright © 2015 Victor Neo
 
-Distributed under the Eclipse Public License either version 1.0  any later version.
+Distributed under the Eclipse Public License version 1.0.
