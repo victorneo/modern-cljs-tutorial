@@ -15,5 +15,3 @@
            (.-getElementById js/document))
     (let [login-form (.getElementById js/document "loginForm")]
       (set! (.-onsubmit login-form) validate-form))))
-
-;; (set! (.-onload js/window) init)

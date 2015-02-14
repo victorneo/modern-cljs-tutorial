@@ -14,20 +14,46 @@
   ;; lein-cljsbuild plugin to build a CLJS project
   :plugins [[lein-cljsbuild "1.0.4"]
             [lein-ring "0.9.1"]]
+  :hooks [leiningen.cljsbuild]
 
   :ring {:handler modern-cljs.core/handler}
 
   ;; cljsbuild options configuration
   :cljsbuild {:builds
-              [{;; CLJS source code path
-                :source-paths ["src/cljs"]
+              {:dev
+               {;; clojurescript source code path
+                :source-paths ["src/cljs", "src/brepl"]
 
-                ;; Google Closure (CLS) options configuration
-                :compiler {;; CLS generated JS script filename
-                           :output-to "resources/public/js/modern.js"
+                ;; Google Closure Compiler options
+                :compiler {;; the name of emitted JS script file
+                           :output-to "resources/public/js/modern_dbg.js"
 
-                           ;; minimal JS optimization directive
+                           ;; minimum optimization
                            :optimizations :whitespace
 
-                           ;; generated JS code prettyfication
-                           :pretty-print true}}]})
+                           ;; prettyfying emitted JS
+                           :pretty-print true}} 
+               :pre-prod
+               {;; clojurescript source code path
+                :source-paths ["src/cljs", "src/brepl"]
+                :compiler {;; different output name
+                           :output-to "resources/public/js/modern_pre.js"
+
+                           ;; simple optmization
+                           :optimizations :simple
+
+                           ;; no need prettyfication
+                           :pretty-print false}}
+              :prod
+               {;; clojurescript source code path
+                :source-paths ["src/cljs"]
+
+                ;; Google Closure Compiler options
+                :compiler {;; the name of emitted JS script file
+                           :output-to "resources/public/js/modern.js"
+
+                           ;; advanced optimization
+                           :optimizations :advanced
+
+                           ;; no need prettyfication
+                           :pretty-print false}}}})
