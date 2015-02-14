@@ -39555,7 +39555,7 @@ modern_cljs.shopping.init = function init() {
     return null;
   }
 };
-window.onload = modern_cljs.shopping.init;
+goog.exportSymbol("modern_cljs.shopping.init", modern_cljs.shopping.init);
 goog.provide("goog.structs");
 goog.require("goog.array");
 goog.require("goog.object");
@@ -45860,7 +45860,7 @@ modern_cljs.login.init = function init() {
     return null;
   }
 };
-window.onload = modern_cljs.login.init;
+goog.exportSymbol("modern_cljs.login.init", modern_cljs.login.init);
 goog.provide("clojure.browser.event");
 goog.require("cljs.core");
 goog.require("goog.events.EventType");
