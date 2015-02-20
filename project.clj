@@ -9,7 +9,8 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2760"]
                  [domina "1.0.3"]
-                 [compojure "1.3.1"]]
+                 [compojure "1.3.1"]
+                 [hiccups "0.3.0"]]
 
   ;; lein-cljsbuild plugin to build a CLJS project
   :plugins [[lein-cljsbuild "1.0.4"]
@@ -32,7 +33,7 @@
                            :optimizations :whitespace
 
                            ;; prettyfying emitted JS
-                           :pretty-print true}} 
+                           :pretty-print true}}
                :pre-prod
                {;; clojurescript source code path
                 :source-paths ["src/cljs", "src/brepl"]
